@@ -114,7 +114,7 @@ return array(
                 'actions'=>array('project1.get.main')
             )
         ),
-        'cache'=>true,
+        'cache'=>false,
         'nameCtrl'=>'C',
         'nameActs'=>'A'
     ),

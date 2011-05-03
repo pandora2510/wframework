@@ -76,7 +76,7 @@ class Request extends Object implements ArrayAccess {
                 $this->_req_cache($acts,$q);
             } elseif($this->SETT['cache']) {
                 if(!$this->PRO['cache']['actions'] instanceof Cache)
-                    throw new RouterException ('Object: cache/actions - IS NOT AN INSTANCEOF OF CLASS: "Cache"',E_USER_ERROR,0,__FILE__,__LINE__);
+                    throw new RequestException('Object: cache/actions - IS NOT AN INSTANCEOF OF CLASS: "Cache"',E_USER_ERROR,0,__FILE__,__LINE__);
             } else {
                 $this->_req_default($acts);
             }
