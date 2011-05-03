@@ -1,0 +1,5 @@
+<?php
+
+return 'w framework';
+
+?>

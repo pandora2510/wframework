@@ -1,0 +1,80 @@
+/* warning ********************************************************************/
+
+#old-browser-warning, #unknown-browser-warning, #not-cookie-warning {
+    color: white; background-color: red; border: 1px solid red; position: absolute; position: fixed;
+    top: 10px; left: 10px; width: 398px; z-index: 100;
+    text-align: left; font-size: 14px; font-weight: bold;
+    -moz-border-radius: 8px; -webkit-border-radius: 8px; -khtml-border-radius: 8px; border-radius: 8px;
+    display: block;
+}
+
+#unknown-browser-warning {
+    z-index: 99;
+}
+
+#not-cookie-warning {
+    z-index: 101;
+}
+
+#old-browser-warning .body, #unknown-browser-warning .body, #not-cookie-warning .body {
+    margin: 3px;
+}
+
+#old-browser-warning .head, #unknown-browser-warning .head, #not-cookie-warning .head {
+    margin: 3px; text-align: right;
+}
+
+#old-browser-warning .close, #unknown-browser-warning .close, #not-cookie-warning .close {
+    display: inline-block; cursor: pointer; margin: 1px;
+}
+
+#old-browser-warning .close:hover, #unknown-browser-warning .close:hover, #not-cookie-warning .close:hover {
+    margin: 2px 0px 0px 2px;
+}
+
+/* ****************************************************************************/
+
+body {
+    text-align: center; padding: 0px; margin: 0px; background-color: white;
+    font-family: tahoma, arial, verdana, sans-serif; font-size: 13px; height: 100%
+}
+
+html {
+    height: 100%;
+}
+
+body > .templates {
+    display: none;
+}
+
+a, .a {
+    font-weight: bold; text-decoration: none; cursor: pointer; color: #0066cc;
+}
+
+a:hover, .a:hover {
+    text-decoration: underline; color: #009eed;
+}
+
+a:active, .a:active {
+    color: #cc0000;
+}
+
+a:visited, .a:visited {
+    color: #a80087;
+}
+
+/******************************************************************************/
+
+body > .body {
+    display: inline-block; text-align: left; width: 100%; margin: 0px;
+}
+
+body > .hidden, body > .info {
+    display: none;
+}
+
+/******************************************************************************/
+
+.main {
+    text-align: center;
+}

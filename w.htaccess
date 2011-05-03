@@ -1,0 +1,23 @@
+#кодировка по умолчанию
+AddDefaultCharset UTF-8
+
+#запрет доступа к некоторым файлам
+<FilesMatch "\.(php|log|cache|loaderfilecache|aloaderfilecache)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+<FilesMatch "^sess_.*">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+<Files index.php>
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files index.js.php>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+#запрет просмотра содержимого каталогов
+Options -Indexes
