@@ -80,7 +80,7 @@ return array(
         'cookiesecure'=>false,
         'cookiehttponly'=>true,
         // file
-        'folder'=>AP.SD.'temp'.D.'session_'.PROJECT.D
+        'folder'=>AP.SD.PRJ.D.PROJECT.D.'sessions'.D
     ),
     'URL'=>array(
         'scheme'=>array(
