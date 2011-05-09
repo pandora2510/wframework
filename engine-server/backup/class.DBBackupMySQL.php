@@ -8,14 +8,13 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Backup, DBQuery
- * @version    0.1.1
  */
 class DBBackupMySQL extends Backup {
 
  protected $exp = 'mysql';
 
     public function __init($a) {
-        if(!($a instanceof DBQuery)) trigger_error('Object: "$a" - IS NOT AN INSTANCEOF OF CLASS: "DBQuery"',E_USER_ERROR);
+        if(!($a instanceof DBQueryMySQLi)) trigger_error('Object: "$a" - IS NOT AN INSTANCEOF OF CLASS: "DBQueryMySQLi"',E_USER_ERROR);
         $this->res = $a;
     }
 
@@ -28,13 +27,14 @@ class DBBackupMySQL extends Backup {
             if(!in_array($row['Name'],$arg)) continue;
             $tables[] = array('name'=>$row['Name'],'rows'=>$row['Rows']);
         }
-        $f = fopen($this->path,'wb');
-        flock($f,LOCK_EX);
+
+        $this->_open();
 
         for($i=0, $n=sizeof($tables); $i<$n; $i++) {
             $res = $this->res->query('SHOW CREATE TABLE %s',$tables[$i]['name']);
             foreach($res as $row) {
-                fwrite($f,"\r\n\n".str_replace('CREATE TABLE','CREATE TABLE IF NOT EXISTS',$row['Create Table']).';'."\n");
+                // возможно надо удалять или чистить старую тавлицу!!!
+                $this->_write("\r\n\n".str_replace('CREATE TABLE','CREATE TABLE IF NOT EXISTS',$row['Create Table']).';'."\n");
                 // inserts
                 if($this->SETT['rows'] < 1) continue;
                 $rows = $tables[$i]['rows'];
@@ -63,7 +63,7 @@ class DBBackupMySQL extends Backup {
                     $sql .= implode(',',$sqla);
 
                     // write
-                    fwrite($f,"\r\n".$sql.';'."\n");
+                    $this->_write("\r\n".$sql.';'."\n");
 
                     $j++;
                     $rows = $rows - $this->SETT['rows'];
@@ -71,8 +71,7 @@ class DBBackupMySQL extends Backup {
             }
         }
 
-        flock($f,LOCK_UN);
-        fclose($f);
+        $this->_close();
         return true;
     }
 

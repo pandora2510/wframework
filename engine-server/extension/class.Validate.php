@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, UTF8, ValidateException
- * @version    0.1.4
  */
 class Validate extends Object {
 

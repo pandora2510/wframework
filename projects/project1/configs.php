@@ -27,7 +27,7 @@ return array(
     'Handling'=>array(
         'alt'=>'Произошла фатальная ошибка. Попробуйте перезагрузить страницу!',
         'level'=>E_ALL,
-        'reporting'=>1,
+        'reporting'=>3,
         'uerror'=>true,
         'char'=>CHAR,
         'mail'=>'xxx',
@@ -42,11 +42,20 @@ return array(
         'socket'=>null,
         'char'=>'utf8'
     ),
+    'DBQueryPostgreSQL'=>array(
+    	'host'=>'localhost',
+    	'user'=>'postgres',
+    	'pass'=>'',
+    	'dbname'=>'postgres',
+    	'port'=>'5432',
+    	'socket'=>null,
+        'char'=>'UTF8'
+    ),
     'FileSystem'=>array(
         'ow'=>false,
         'AP'=>AP
     ),
-    'TMemcache'=>array(
+    'TemporaryMemcache'=>array(
         'pool'=>array(
             array('host'=>'localhost','port'=>11211)
         ),
@@ -71,7 +80,7 @@ return array(
         'cookiesecure'=>false,
         'cookiehttponly'=>true,
         // file
-        'folder'=>AP.SD.PRJ.D.PROJECT.D.'sessions'
+        'folder'=>AP.SD.'temp'.D.'session_'.PROJECT.D
     ),
     'URL'=>array(
         'scheme'=>array(
@@ -101,7 +110,7 @@ return array(
         'nameSystemAjax'=>'SYSTEM_SESSION_AJAX',
         'localeName'=>'locale',
         'defCtrl'=>'home',
-        'aDefCtrl'=>'main',
+        'aDefCtrl'=>'index',
         'controllers'=>array(
             'home'=>array(
                 'query'=>'html',
@@ -147,7 +156,7 @@ return array(
     ),
     'CController'=>array(
         'char'=>CHAR,
-        'index'=>AP.SD.CENGINE.D.'index.js',
+        'index'=>AP.SD.CENGINE.D.'client.js',
         'config'=>AP.SD.PRJ.D.PROJECT.D.'config.js',
         'fcache'=>AP.SD.PRJ.D.PROJECT.D.'config.cache',
         'settings'=>'controller',

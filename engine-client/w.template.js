@@ -7,7 +7,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       w
- * @version    0.1.7
  */
 (function(w) {// сделать обработку ошибок при генерации функции!!!
 

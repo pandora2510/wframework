@@ -7,8 +7,7 @@
  * @copyright  (c) 2010 - 2011 Checha Andrey
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
- * @uses       Cache, TMemcache, CacheException
- * @version    0.2.2
+ * @uses       Cache, Temporary, CacheException
  */
 class MCache extends Cache {
 
@@ -17,7 +16,7 @@ class MCache extends Cache {
 
     public function  __init($a) {
         try {
-            if($this->PRO['storage']['temporary'] instanceof TMemcache) $this->m = $this->PRO['storage']['temporary'];
+            if($this->PRO['storage']['temporary'] instanceof Temporary) $this->m = $this->PRO['storage']['temporary'];
              else throw new CacheException('Object: storage/temporary - IS NOT AN INSTANCEOF OF CLASS: "Temporary"',E_USER_ERROR,0,__FILE__,__LINE__);
             parent::__init($a);
         } catch(CacheException $e) {
@@ -28,8 +27,10 @@ class MCache extends Cache {
     public function set($key,$tag,$data,$prefix=true) {
         $tkey = ($prefix?self::SPACE.self::D.$this->space.self::D:'').$key;
         $this->m->lock($tkey);
-        $this->m->set($tkey,$this->m->get($tkey).self::R.$key.self::D.$tag,$this->SETT['lifetime']*2);
-        $this->m->set($tkey.self::D.$tag,json_encode($data),$this->SETT['lifetime']);
+        $this->m->lifetime = $this->SETT['lifetime']*2;
+        $this->m->set($tkey,$this->m->get($tkey).self::R.$key.self::D.$tag);
+        $this->m->lifetime = $this->SETT['lifetime'];
+        $this->m->set($tkey.self::D.$tag,json_encode($data));
         $this->m->unlock($tkey);
     }
 

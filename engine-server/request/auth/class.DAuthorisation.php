@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, ErrorException, Authorisation
- * @version    0.3.4
  */
 class DAuthorisation extends Authorisation {
 

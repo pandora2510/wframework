@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, ErrorException
- * @version    0.2.2
  */
 class Test extends Object {
 
@@ -30,7 +29,7 @@ class Test extends Object {
         return $this->SETT['f']?number_format($smem,0,'.',' '):$smem;
     }
 
-    public function getcpu() {// проверить, как ведет себя на виндовсе
+    public function getcpu() {
         $time = array('user'=>'unknown','system'=>'unknown');
         if(function_exists('getrusage')) {
             $arg = getrusage();

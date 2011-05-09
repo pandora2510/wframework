@@ -1,6 +1,6 @@
 <?php 
 /**
- * @desc       Класс для выполнения запросов к БД через mysqli
+ * @desc       Класс для выполнения запросов к MySQL через mysqli
  * @package    w framework
  * @category   engine/storage/db/mysqli
  * @author     Checha Andrey
@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       DBQuery, mysqli, DBException, DBResultMySQLi
- * @version    0.2.2
  */
 class DBQueryMySQLi extends DBQuery {
 	
@@ -36,7 +35,7 @@ class DBQueryMySQLi extends DBQuery {
 	$this->d->set_charset($char);
     }
 	
-    protected function _escape($arg) {        
+    protected function _escape($arg) {
         if(is_null($this->d)) $this->_connect();
         return $this->d->real_escape_string($arg);        
     }
@@ -51,9 +50,10 @@ class DBQueryMySQLi extends DBQuery {
     }
 
     protected function  getResult($q) {
-        return new DBResultMySQLi($this->PRO,$q);
+        if($q instanceof mysqli_result) return new DBResultMySQLi($this->PRO,$q); else return new EmptyIterator();
     }
-	
+
+    // небезопасный метод
     protected function _mquery($sql) {
         if(is_null($this->d)) $this->_connect();
 	$res = $this->d->multi_query($sql);
@@ -66,6 +66,11 @@ class DBQueryMySQLi extends DBQuery {
     public function lastInsertId() {
         if(is_null($this->d)) $this->_connect();
 	return $this->d->insert_id;
+    }
+
+    public function affected_rows() {
+        if(is_null($this->d)) $this->_connect();
+	return $this->d->affected_rows;
     }
 
     protected function _begin() {

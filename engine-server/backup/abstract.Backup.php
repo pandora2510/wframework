@@ -8,13 +8,13 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, DirectoryIterator
- * @version    0.1.0
  */
 abstract class Backup extends Object {
 
- protected $res = null;
- protected $path = null;
+ protected $res = null; 
  protected $exp = 'backup';
+ private $path = null;
+ private $f = null;
 
     public function __init($a) {
         $this->res = $a;
@@ -41,6 +41,20 @@ abstract class Backup extends Object {
         while(sizeof($arr) > $this->SETT['total']) {
             unlink(array_shift($arr));
         }
+    }
+
+    protected function _open() {
+        $this->f = fopen($this->path,'wb');
+        flock($this->f,LOCK_EX);
+    }
+
+    protected function _write($data) {
+        return fwrite($this->f,$data);
+    }
+
+    protected function _close() {
+        flock($this->f,LOCK_UN);
+        return fclose($this->f);
     }
 
 }

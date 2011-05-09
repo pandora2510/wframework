@@ -8,9 +8,8 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, ArchiveException
- * @version    0.1.1
  */
-class Tar extends Object {//@
+class Tar extends Object {
 
  const BLOCK_LITE = 512;
  const BLOCK_BIG = 524288;

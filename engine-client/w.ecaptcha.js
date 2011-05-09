@@ -7,7 +7,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       w
- * @version    0.2.5
  */
 (function(w) {
 

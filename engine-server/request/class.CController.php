@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, ArrayAccess, Prototype, CCtrlException
- * @version    0.3.3
  */
 class CController extends Object implements ArrayAccess {
 

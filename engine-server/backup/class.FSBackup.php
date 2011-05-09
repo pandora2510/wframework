@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Backup, Tar
- * @version    0.1.0
  */
 class FSBackup extends Backup {
 

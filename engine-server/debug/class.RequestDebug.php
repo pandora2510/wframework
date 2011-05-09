@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Request
- * @version    0.1.6
  */
 class RequestDebug extends Request {
 
@@ -21,8 +20,9 @@ class RequestDebug extends Request {
 
     public function __init($a) {// большее количество данных при кэщировании записывать!!!
         try {
-            if(!($a instanceof Test)) throw new RequestException('Object: "$a" - IS NOT AN INSTANCEOF OF CLASS: "Test"',E_USER_ERROR,0,__FILE__,__LINE__);
-            $this->res = $a;
+            if($a instanceof Test) $this->res = $a;
+             else throw new RequestException('Object: "$a" - IS NOT AN INSTANCEOF OF CLASS: "Test"',E_USER_ERROR,0,__FILE__,__LINE__);
+            
             // копировать настройки класса Request
             if(!($this->PRO['settings']['Request'] instanceof Prototype))
                 throw new RequestException('Object: "$this->PRO[\'settings\'][\'Request\']" - IS NOT AN INSTANCEOF OF CLASS: "Prototype"',E_USER_ERROR,0,__FILE__,__LINE__);
@@ -34,10 +34,19 @@ class RequestDebug extends Request {
         }
     }
 
+    protected function gettime($stime) {
+        $stime = explode(' ',$stime);
+        $stime = $stime[0]+$stime[1];
+        $ftime = explode(' ',microtime());
+        $ftime = $ftime[0]+$ftime[1];
+        $ftime = $ftime-$stime;
+        return $this->SETT['f']?number_format($ftime,6,'.',''):$ftime;
+    }
+
     protected function _req_default($acts) {
         $stime = microtime();
         $this['actions']->prepare($acts,array());
-        $this->log['prepare'] = $this->res->gettime($stime);
+        $this->log['prepare'] = $this->gettime($stime);
         foreach($this['actions'] as $k=>$val) {
             $stime = microtime();
             $this['document']->param(array('cache'=>false));
@@ -45,7 +54,7 @@ class RequestDebug extends Request {
             $this->log['acts'][] = array('name'=>$k,'type'=>self::N,'time'=>$this->res->gettime($stime),'keys'=>array());
         }
         // запись данных в кэш
-        $this->tofile();
+        $this->tofile($this->SETT['filelog'],$this->generate());
     }
 
     protected function _req_cache($acts,$q) {
@@ -114,10 +123,10 @@ class RequestDebug extends Request {
         $this->cacheClean();
         $this->log['clean'] = $this->res->gettime($stime);
         // запись данных в кэш
-        $this->tofile();
+        $this->tofile($this->SETT['filelog'],$this->generate());
     }
 
-    protected function tofile() {
+    protected function generate() {
         $str = '/*-begin----'.str_pad('-',90,'-').'*/'."\n";
         $str .= date('Y/m/d H:i:s')."\n".$this->res->geturl()."\n";
         $str .= '/*-prepare--'.str_pad('-',90,'-').'*/'."\n";
@@ -131,7 +140,21 @@ class RequestDebug extends Request {
         $str .= (isset($this->log['clean'])?$this->log['clean']:0)."\n";
         $str .= '/*-end------'.str_pad('-',90,'-').'*/'."\n";
         $str .= "\n\n";
-        return $this->res->tofile($this->SETT['filelog'],$str);
+
+        return $str;
+    }
+
+    protected function tofile($file=false,$str=null) {
+        if($file === false or $str === null)  return null;
+        if(!is_file($file)) {
+            if(!file_exists(dirname($file))) mkdir(dirname($file),'0777',true);
+	}
+        $f = fopen($file,'a');
+        flock($f,LOCK_EX);
+        $st = fwrite($f,$str);
+        flock($f,LOCK_UN);
+        fclose($f);
+	return (bool)$st;
     }
 
 }

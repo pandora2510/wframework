@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, IteratorAggregate, Input
- * @version    0.8.11
  */
 class Actions extends Object implements IteratorAggregate {
 

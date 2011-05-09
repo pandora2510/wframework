@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Prototype, Object, Autoloader
- * @version    0.5.2
  */
 
 //ini_set('display_errors','on');
@@ -59,8 +58,8 @@ $obj['settings'] = require(AP.SD.PRJ.D.PROJECT.D.'configs.php');// путь к �
 $obj['autoloader'] = new Accelerateloader($obj);// !!!жестко привязаны к пути
 $obj['error'] = new Handling($obj);// !!!жестко привязаны к пути
 $obj['test'] = new Test($obj);
-$obj['storage']['db'] = new DBQueryMySQLi($obj);
-//$obj['storage']['temporary'] = new TMemcache($obj);
+$obj['storage']['db'] = new DBQueryMySQLi($obj);// DBQueryPostgreSQL($obj);
+//$obj['storage']['temporary'] = new TemporaryMemcache($obj);
 //$obj['cache']['actions'] = new MCache($obj,null);
 
 $obj['extension']['UTF8'] = new UTF8($obj);
@@ -92,7 +91,7 @@ try {
 
     $obj['request']['auth']->writeData();
     $obj['request']['session']->comit();
-
+    
 } catch(ErrorException $e) {
     $obj['error']->handlerror($e);
 }
@@ -100,14 +99,6 @@ unset($obj['request']['auth']);// избавление от возможных �
 
 // запись лога
 $obj['test']->tofile();
-
-// проверка mail
-//$obj['request']['outputMail'] = new OutputMail($obj);
-//$m = new Mail($obj);
-//$m->to('chertjaga@mail.ru');
-//$m->subject('Hello world!!!');
-//$m->message('Проверка правильной работы почты!!!');
-//echo $m->send();
 
 
 ?>

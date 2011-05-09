@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Validate, Prototype
- * @version    0.1.1
  */
 class ValidateExtended extends Validate {
 

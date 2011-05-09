@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Autoloader
- * @version    0.1.0
  */
 class Accelerateloader extends Autoloader {
 

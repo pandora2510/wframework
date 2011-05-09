@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Prototype
- * @version    0.3.0
  */
 abstract class Object {
 	

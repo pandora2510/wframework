@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, IteratorAggregate
- * @version    0.2.0
  */
 abstract class DBResult extends Object implements IteratorAggregate {
 	
@@ -19,8 +18,6 @@ abstract class DBResult extends Object implements IteratorAggregate {
     }
 
     abstract public function all();
-
-    abstract public function bool($arg);
 
     abstract public function  __destruct();
 	

@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, ArrayAccess, Input, Prototype, Output, SessionException
- * @version    0.2.1
  */
 abstract class Session extends Object implements ArrayAccess, IteratorAggregate {
 

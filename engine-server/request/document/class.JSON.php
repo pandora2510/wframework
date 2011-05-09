@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Document, Input, OutputBrowser
- * @version    0.3.3
  */
 class JSON extends Document {
 

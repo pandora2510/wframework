@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, ArrayAccess, RequestException, Authorisation, Model, Actions, Input, Output
- * @version    0.2.4
  */
 class Request extends Object implements ArrayAccess {
 

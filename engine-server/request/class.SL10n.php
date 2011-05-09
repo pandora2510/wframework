@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, Actions, ActionException
- * @version    0.1.0
  */
 class SL10n extends Object {
 

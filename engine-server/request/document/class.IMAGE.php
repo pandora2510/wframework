@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Document, OutputBrowser
- * @version    0.3.1
  */
 class IMAGE extends Document {
 

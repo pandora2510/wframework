@@ -7,7 +7,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       ...
- * @version    0.1.14
  */
 (function(window) {
     

@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Capture, Object, Mail
- * @version    0.2.1
  */
 class Handling extends Object {
 	
@@ -51,19 +50,19 @@ class Handling extends Object {
         if(!file_exists(dirname($this->SETT['plog']))) {
             mkdir(dirname($this->SETT['plog']),'0777',true);
 	}
-	$d = '<error>
-            <date>'.date('Y/m/d H:i:s').'</date>
-            <class>'.get_class($e).'</class>
-            <message>'.$e->getMessage().'</message>
-            <code>'.$e->getCode().'</code>
-            <file>'.$e->getFile().'</file>
-            <line>'.$e->getLine().'</line>
-            <stack>'.$e->getTraceAsString().'</stack>
-	</error>';
-	error_log($d."\n",3,$this->SETT['plog']);
+	$d = '<error>'."\n";
+        $d .= "\t".'<date>'.date('Y/m/d H:i:s').'</date>'."\n";
+        $d .= "\t".'<class>'.get_class($e).'</class>'."\n";
+        $d .= "\t".'<message>'.$e->getMessage().'</message>'."\n";
+        $d .= "\t".'<code>'.$e->getCode().'</code>'."\n";
+        $d .= "\t".'<file>'.$e->getFile().'</file>'."\n";
+        $d .= "\t".'<line>'.$e->getLine().'</line>'."\n";
+        $d .= "\t".'<stack>'.$e->getTraceAsString().'</stack>'."\n";
+        $d .= '</error>'."\n";
+	error_log($d,3,$this->SETT['plog']);
     }
 	
-    protected function mail($e) {// проверить как работает
+    protected function mail($e) {// изменить формат сообщения
 	$m = new Mail($this->PRO);
         $m->to($this->SETT['mail'],'wframework');
         $m->subject($e->getMessage());

@@ -8,22 +8,22 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, ErrorException, DBException
- * @version    0.3.0
  */
 abstract class DBQuery extends Object {
 
  protected $d = null;
 	
     public function __init($a) {
-	try {
-            //$this->_connect();
-	} catch(DBException $e) {
-            $this->PRO['error']->handlerror($e);
-	}
+	//try {
+        //    $this->_connect();
+	//} catch(DBException $e) {
+        //    $this->PRO['error']->handlerror($e);
+	//}
     }
 
-    public function getResurs() {
-        return $this->d;// передавать ссылку
+    // передавать ссылку/дескриптор соединения с БД
+    public function res() {
+        return $this->d;
     }
 	
     abstract protected function _connect();
@@ -41,8 +41,7 @@ abstract class DBQuery extends Object {
     final public function query_a($sql,array $arg) {
 	try {
             $sql = $this->_sprintf($sql,$arg);
-            $type = substr($sql,0,3);
-            return in_array($type,array('SEL','SHO','DES','EXP'))?$this->getResult($this->_query($sql)):$this->_query($sql);
+            return $this->getResult($this->_query($sql));
 	} catch(DBException $e) {
             $this->PRO['error']->handlerror($e);
             return null;
@@ -60,7 +59,7 @@ abstract class DBQuery extends Object {
     final public function mquery_a($sql,array $arg) {
         try {
             $sql = $this->_sprintf($sql,$arg);
-            return (bool)$this->_mquery($sql);
+            return $this->getResult($this->_mquery($sql));
 	} catch(DBException $e) {
             $this->PRO['error']->handlerror($e);
             return null;
@@ -69,7 +68,7 @@ abstract class DBQuery extends Object {
 	
     final public function escape($arg) {
         try {            
-            if(is_array($arg) or is_object($arg)) {
+            if(is_array($arg) or $arg instanceof Traversable) {
                 foreach($arg as $k=>$val) {
                     $arg[$k] = $this->_escape($val);
                 }
@@ -84,8 +83,12 @@ abstract class DBQuery extends Object {
     }
 	
     protected function _sprintf($sql,array $arg) {
-	$arg = $this->escape($arg);
-        return vsprintf($sql,$arg);
+        if(sizeof($arg) > 0) {
+            $arg = $this->escape($arg);
+            return vsprintf($sql,$arg);
+        } else {
+            return $sql;
+        }
     }
 	
     abstract protected function _escape($arg);
@@ -95,6 +98,8 @@ abstract class DBQuery extends Object {
     abstract protected function _mquery($sql);
 
     abstract public function lastInsertId();
+
+    abstract public function affected_rows();
 	
     // st 0 - begin, 1 - commit, 2 - roll
     public function transaction($st=0) {

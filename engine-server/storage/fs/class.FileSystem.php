@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, FSException
- * @version    0.1.2
  */
 class FileSystem extends Object {
     

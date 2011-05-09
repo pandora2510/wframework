@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       DBResult, DBIteratorMySQLi
- * @version    0.2.0
  */
 class DBResultMySQLi extends DBResult {
 
@@ -18,19 +17,14 @@ class DBResultMySQLi extends DBResult {
  public $type = MYSQLI_ASSOC;
 
     public function  getIterator() {
-        $type = in_array($this->type,array(MYSQLI_ASSOC,MYSQLI_BOTH,MYSQLI_NUM))?$this->type:MYSQLI_ASSOC;
-        return new DBIteratorMySQLi($this->res,$type);
+        return new DBIteratorMySQLi($this->res,$this->type);
     }
 
     public function all() {// добавить iterator_to_array
-        $type = in_array($this->type,array(MYSQLI_ASSOC,MYSQLI_BOTH,MYSQLI_NUM))?$this->type:MYSQLI_ASSOC;
         $this->res->data_seek(0);
-        if(method_exists($this->res,'fetch_all')) return $this->res->fetch_all($type);
+        $this->type = in_array($this->type,array(MYSQLI_ASSOC,MYSQLI_BOTH,MYSQLI_NUM))?$this->type:MYSQLI_ASSOC;
+        if(method_exists($this->res,'fetch_all')) return $this->res->fetch_all($this->type);
          else return iterator_to_array($this,true);
-    }
-
-    public function bool($arg) {
-        return ($arg == true);
     }
 
     public function  __destruct() {

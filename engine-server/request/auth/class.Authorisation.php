@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, ArrayAccess, Session, AuthException, Prototype, Input
- * @version    0.4.6
  */
 class Authorisation extends Object implements ArrayAccess {// учитывать IP6 в следующих версиях
 

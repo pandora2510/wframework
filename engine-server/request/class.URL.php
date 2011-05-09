@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, Input, URLException, ErrorException
- * @version    0.3.1
  */
 class URL extends Object {
 

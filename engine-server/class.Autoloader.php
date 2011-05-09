@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, RecursiveDirectoryIterator
- * @version    0.1.2
  */
 class Autoloader extends Object {
 	

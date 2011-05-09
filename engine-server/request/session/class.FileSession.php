@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Session, ErrorException
- * @version    0.1.1
  */
 class FileSession extends Session {
 

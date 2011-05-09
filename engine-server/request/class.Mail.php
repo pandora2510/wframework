@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, OutputMail, ErrorException
- * @version    0.1.0
  */
 class Mail extends Object {
 

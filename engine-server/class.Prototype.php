@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       ProIterator, ArrayAccess, IteratorAggregate
- * @version    0.1.0
  */
 class Prototype implements ArrayAccess,IteratorAggregate {
 	

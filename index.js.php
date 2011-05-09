@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Prototype, Object, Autoloader, Handling, Actions, CController, Input, Output, CCtrlException
- * @version    0.3.0
  */
 
 // метки для вычисление производительности

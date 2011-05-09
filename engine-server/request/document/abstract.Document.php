@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, ArrayAccess, DocException, Output
- * @version    0.4.2
  */
 abstract class Document extends Object implements ArrayAccess {
 

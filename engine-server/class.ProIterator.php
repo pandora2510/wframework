@@ -7,8 +7,7 @@
  * @copyright  (c) 2010 - 2011 Checha Andrey
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
- * @uses       Iterator	
- * @version    0.1.0
+ * @uses       Iterator
  */
 class ProIterator implements Iterator {
 

@@ -7,7 +7,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       w, area, ...
- * @version    0.1.1
  */
 w.helper = {
     url:function(burl,arg,cname,aname) {// cname - контроллер, aname - екшены

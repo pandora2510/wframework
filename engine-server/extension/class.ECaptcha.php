@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object
- * @version    0.2.2
  */
 class ECaptcha extends Object {
 

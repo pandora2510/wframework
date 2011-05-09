@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Tar
- * @version    0.1.0
  */
 class TarGz extends Tar {
 

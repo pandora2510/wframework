@@ -7,7 +7,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       w, ahr
- * @version    0.5.22
  */
 (function(w) {// добавить полноценную работу с checkbox и radio!!!
               // проблема с двойными, динамическими iframe

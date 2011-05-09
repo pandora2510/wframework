@@ -7,8 +7,7 @@
  * @copyright  (c) 2010 - 2011 Checha Andrey
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
- * @uses       Object, Iterator, mysqli_result
- * @version    0.1.1
+ * @uses       Iterator, mysqli_result
  */
 class DBIteratorMySQLi implements Iterator {
 

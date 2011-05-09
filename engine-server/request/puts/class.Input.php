@@ -8,7 +8,6 @@
  * @license    http://wframework.com/LICENSE
  * @link       http://wframework.com/
  * @uses       Object, Validate, ArrayAccess, ErrorException, Prototype
- * @version    0.2.2
  */
 class Input extends Object implements ArrayAccess {
 

@@ -21,3 +21,5 @@ AddDefaultCharset UTF-8
 
 #запрет просмотра содержимого каталогов
 Options -Indexes
+
+#добавить кэширование index.js.php
