@@ -110,7 +110,7 @@ return array(
         'nameSystemAjax'=>'SYSTEM_SESSION_AJAX',
         'localeName'=>'locale',
         'defCtrl'=>'home',
-        'aDefCtrl'=>'index',
+        'aDefCtrl'=>'main',
         'controllers'=>array(
             'home'=>array(
                 'query'=>'html',
