@@ -82,7 +82,7 @@ class Authorisation extends Object implements ArrayAccess {// учитывать
         return $this->role;
     }
 
-    public function checkPrivilege($level,$stiff=false,$dynamic=false) {
+    public function checkPrivilege($level,$dynamic=false) {
         if($dynamic) return 0;
         return ((int)$this->data['privilege']>=(int)$level);
     }
