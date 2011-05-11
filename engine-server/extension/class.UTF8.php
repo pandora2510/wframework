@@ -179,7 +179,7 @@ class UTF8 extends Object {
 
     protected function ucfirst($arg) {
         $str = isset($arg[0])?$arg[0]:null;
-        if($this->is($tr)) {
+        if($this->is($str)) {
             return $this->convert(ucfirst($this->convert($str,$this->SETT['char'],$this->SETT['phpchar'])),$this->SETT['phpchar'],$this->SETT['char']);
         } else {
             return ucfirst($str);
@@ -188,7 +188,7 @@ class UTF8 extends Object {
 
     protected function strtoupper($arg) {
         $str = isset($arg[0])?$arg[0]:null;
-        if($this->is($tr)) {
+        if($this->is($str)) {
             if($this->mb) return mb_strtoupper($str);
             else return $this->convert(strtoupper($this->convert($str,$this->SETT['char'],$this->SETT['phpchar'])),$this->SETT['phpchar'],$this->SETT['char']);
         } else {
@@ -198,7 +198,7 @@ class UTF8 extends Object {
 
     protected function strtolower($arg) {
         $str = isset($arg[0])?$arg[0]:null;
-        if($this->is($tr)) {
+        if($this->is($str)) {
             if($this->mb) return mb_strtolower($str);
             else return $this->convert(strtolower($this->convert($str,$this->SETT['char'],$this->SETT['phpchar'])),$this->SETT['phpchar'],$this->SETT['char']);
         } else {
